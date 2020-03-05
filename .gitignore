@@ -1,0 +1,17 @@
+ac-comphist.dat
+/auto-save-list
+/url
+/elpa
+archive-contents
+/tramp
+backups
+*~
+session.*
+*.elc
+.DS_Store
+/bookmarks
+.session
+.mc-lists.el
+projectile-bookmarks.eld
+projectile.cache
+recentf
