@@ -1,29 +1,25 @@
+(setq ring-bell-function 'ignore)
+
 (if (eq system-type 'darwin)
-  (setq ns-command-modifier 'meta
-        ns-right-option-modifier 'control
-        ns-option-modifier 'super))
+    (setq ns-command-modifier 'meta
+	  ns-right-option-modifier 'control
+	  ns-option-modifier 'super))
 
 (set-fringe-mode '(0 . 0))
 
 (setq make-backup-files nil)
 
 (setq frame-title-format
-	  '((:eval (system-name)) ": " (:eval (if (buffer-file-name)
-											  (abbreviate-file-name (buffer-file-name))
-											"%b"))))
+      '((:eval (system-name)) ": " (:eval (if (buffer-file-name)
+					      (abbreviate-file-name (buffer-file-name))
+					    "%b"))))
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-
-(setq redisplay-dont-pause t
-	  scroll-margin 10
-	  scroll-step 1
-	  scroll-conservatively 100000
-	  scroll-preserve-screen-position 1)
-
+ 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
-(setq ivy-height 16)
+(setq enable-recursive-minibuffers t)
 
 
 ;; Single char cursor movement
@@ -40,6 +36,12 @@
 (global-set-key (kbd "C-a") 'beginning-of-line)
 (global-set-key (kbd "C-e") 'end-of-line)
 
+;; Move to character
+(global-set-key (kbd "M-f") 'avy-goto-char)
+;;(global-set-key (kbd "") 'avy-goto-char-2)
+(global-set-key (kbd "M-g l") 'avy-goto-line)
+(global-set-key (kbd "M-g w") 'avy-goto-word-1)
+
 ;; Screen Scroll
 (global-set-key (kbd "M-y") 'scroll-down)
 (global-set-key (kbd "M-h") 'scroll-up)
@@ -51,16 +53,6 @@
 ;; Move to beginning/ending of buffer
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 (global-set-key (kbd "M->") 'end-of-buffer)
-
-;; Move by character
-(define-key global-map (kbd "M-f") 'go-to-char)
-(define-key global-map (kbd "M-b") 'back-to-char)
-(define-key global-map (kbd "C-f") 'zap-up-to-char)
-(define-key global-map (kbd "C-b") 'zap-back-to-char)
-
-;; Search
-(global-set-key (kbd "M-s") 'swiper-helm)
-(global-set-key (kbd "M-r") 'swiper-helm)
  
 ;; open file
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -99,23 +91,48 @@
 
 (global-set-key (kbd "<delete>") 'delete-char) ; the Del key for forward delete
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 ;; Execute command
-;;  (smex-initialize)
-;; (global-set-key (kbd "M-'") 'smex)
-(global-set-key (kbd "M-'") 'execute-extended-command)
+(global-set-key (kbd "M-'") 'counsel-M-x)
+ 
+;; search
+(global-set-key (kbd "M-s") 'swiper)
+(global-set-key (kbd "M-r") 'swiper-backward)
 
-;; isearch
-(global-set-key (kbd "M-s") 'isearch-forward)
-(global-set-key (kbd "M-r") 'isearch-backward)
+;; text selection
+(global-set-key (kbd "M-e") 'er/expand-region)
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 
-;;; --------------------------------------------------
-;;; isearch mode
-(add-hook 'isearch-mode-hook
- (lambda ()
- (define-key isearch-mode-map (kbd "M-s") 'isearch-repeat-forward)
- (define-key isearch-mode-map (kbd "M-r") 'isearch-repeat-backward)
- (define-key isearch-mode-map (kbd "M-w") 'backward-kill-word)
- (define-key isearch-mode-map (kbd "M-v") 'isearch-yank-kill)
- (define-key isearch-mode-map (kbd "M-V") 'isearch-yank-word-or-char)))
+;; projects
+(projectile-global-mode)
+(setq projectile-completion-system 'ivy)
+(global-set-key (kbd "M-O") 'projectile-find-file)
+
+;; magit
+(setq magit-save-some-buffers nil
+      magit-process-popup-time 60
+      magit-completing-read-function 'magit-ido-completing-read
+      magit-status-buffer-switch-function 'switch-to-buffer)
+
+(add-hook 'magit-mode-hook
+	  (lambda() 
+	    (local-set-key (kbd "M-s") 'swiper)
+	    (local-set-key (kbd "M-r") 'swiper-backward)
+	    (local-set-key (kbd "M-h") 'scroll-up)
+	    (local-set-key (kbd "M-c") 'magit-copy-item-as-kill))) 
+
+;; switch buffer
+(global-set-key (kbd "M-b") 'ivy-switch-buffer)
+
+;; some convenient aliases
+(defalias 'rr 'replace-regexp)
+(defalias 'qr 'query-replace)
+(defalias 'qrr 'query-replace-regexp)
+(defalias 'lml 'list-matching-lines)
+(defalias 'dml 'delete-matching-lines)
+
+(defalias 'eb 'eval-buffer)
+(defalias 'er 'eval-region)
+(defalias 'ee 'eval-expression)
+
+(defalias 'git 'magit-status)
+(defalias 'ttl 'toggle-truncate-lines)

@@ -18,13 +18,15 @@
  '(custom-safe-themes
    (quote
     ("37ba833442e0c5155a46df21446cadbe623440ccb6bbd61382eb869a2b9e9bf9" default)))
- '(package-selected-packages (quote (darkokai-theme counsel ivy)))
+ '(package-selected-packages
+   (quote
+    (crux yaml-mode swiper-helm avy expand-region projectile magit markdown-mode darkokai-theme counsel ivy)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "outline" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "outline" :family "Monaco")))))
 
 (load-theme 'darkokai t)
