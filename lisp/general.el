@@ -1,3 +1,4 @@
+
 (setq ring-bell-function 'ignore)
 
 (if (eq system-type 'darwin)
@@ -123,6 +124,21 @@
 ;; switch buffer
 (global-set-key (kbd "M-b") 'ivy-switch-buffer)
 
+;; switch window
+(setq winum-keymap
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+      (define-key map (kbd "M-1") 'winum-select-window-1)
+      (define-key map (kbd "M-2") 'winum-select-window-2)
+      (define-key map (kbd "M-3") 'winum-select-window-3)
+      (define-key map (kbd "M-4") 'winum-select-window-4)
+      (define-key map (kbd "M-5") 'winum-select-window-5)
+      (define-key map (kbd "M-6") 'winum-select-window-6)
+      (define-key map (kbd "M-7") 'winum-select-window-7)
+      (define-key map (kbd "M-8") 'winum-select-window-8)
+      map))
+(winum-mode)
+
 ;; some convenient aliases
 (defalias 'rr 'replace-regexp)
 (defalias 'qr 'query-replace)
@@ -136,3 +152,10 @@
 
 (defalias 'git 'magit-status)
 (defalias 'ttl 'toggle-truncate-lines)
+
+
+;; dashboard
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome Home")
+(setq dashboard-center-content t)
