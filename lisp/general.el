@@ -48,7 +48,6 @@
 (global-set-key (kbd "M-h") 'scroll-up)
 
 ;; Auto selection
-;; (global-set-key (kbd "M-e") 'extend-selection)
 (global-set-key (kbd "M-e") 'er/expand-region)
 
 ;; Move to beginning/ending of buffer
@@ -73,10 +72,9 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;; Copy Cut Paste, Paste previous
-(global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
-(global-set-key (kbd "M-V") 'helm-show-kill-ring)
+(global-set-key (kbd "M-V") 'counsel-yank-pop)
 (global-set-key (kbd "M-C") 'copy-all)
 (global-set-key (kbd "M-X") 'cut-all)
 
@@ -159,3 +157,6 @@
 (dashboard-setup-startup-hook)
 (setq dashboard-banner-logo-title "Welcome Home")
 (setq dashboard-center-content t)
+
+;; spell checking
+(setq ispell-program-name "/usr/local/bin/hunspell")
