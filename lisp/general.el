@@ -1,3 +1,4 @@
+(require 'flyspell)
 
 (setq ring-bell-function 'ignore)
 
@@ -137,6 +138,9 @@
       map))
 (winum-mode)
 
+;; zap to character
+(global-set-key (kbd "C-f") #'zzz-to-char)
+
 ;; some convenient aliases
 (defalias 'rr 'replace-regexp)
 (defalias 'qr 'query-replace)
@@ -160,3 +164,8 @@
 
 ;; spell checking
 (setq ispell-program-name "/usr/local/bin/hunspell")
+(define-key flyspell-mode-map (kbd "M-;") 'flyspell-correct-wrapper)
+
+;; rainbow delimiter
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
