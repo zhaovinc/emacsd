@@ -1,4 +1,6 @@
 (require 'flyspell)
+(require 'flyspell-correct-ivy)
+(require 'smartparens-config)
 
 (setq ring-bell-function 'ignore)
 
@@ -73,6 +75,7 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;; Copy Cut Paste, Paste previous
+(global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-V") 'counsel-yank-pop)
@@ -168,4 +171,14 @@
 
 ;; rainbow delimiter
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(beacon-mode 1)
+(setq beacon-color "#6699cc")
+
+;; smart paren
+(smartparens-global-mode t)
+
+;; some other useful keybindings
+(global-set-key (kbd "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-o") 'crux-smart-open-line)
 
