@@ -25,6 +25,8 @@
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
 
+;; C-g is harder to press in Mac keyboard than M-g
+(global-set-key (kbd "M-g") 'keyboard-escape-quit)
 
 ;; Single char cursor movement
 (global-set-key (kbd "M-j") 'backward-char)
