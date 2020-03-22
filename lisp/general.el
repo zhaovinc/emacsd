@@ -2,6 +2,9 @@
 (require 'flyspell-correct-ivy)
 (require 'smartparens-config)
 
+;; set exec path
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (setq ring-bell-function 'ignore)
 
 (if (eq system-type 'darwin)
@@ -190,4 +193,114 @@
 
 (yas-global-mode 1)
 
+;; show ivy candidates in popup
+(require 'ivy-posframe)
+;; display at `ivy-posframe-style'
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
 
+;; some convenient aliases
+(defalias 'rr 'replace-regexp)
+(defalias 'qr 'query-replace)
+(defalias 'qrr 'query-replace-regexp)
+(defalias 'lml 'list-matching-lines)
+(defalias 'dml 'delete-matching-lines)
+
+(defalias 'eb 'eval-buffer)
+(defalias 'er 'eval-region)
+(defalias 'ee 'eval-expression)
+
+(defalias 'git 'magit-status)
+(defalias 'ttl 'toggle-truncate-lines)
+
+
+;; dashboard
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome Home")
+(setq dashboard-center-content t)
+
+;; spell checking
+(setq ispell-program-name "/usr/local/bin/hunspell")
+(define-key flyspell-mode-map (kbd "M-;") 'flyspell-correct-wrapper)
+
+;; rainbow delimiter
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(beacon-mode 1)
+(setq beacon-color "#60ff14")
+
+;; smart paren
+(smartparens-global-mode t)
+
+;; some other useful keybindings
+(global-set-key (kbd "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-o") 'crux-smart-open-line)
+
+;; yasnippet
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(yas-global-mode 1)
+
+;; show ivy candidates in popup
+(require 'ivy-posframe)
+;; display at `ivy-posframe-style'
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+
+;; some convenient aliases
+(defalias 'rr 'replace-regexp)
+(defalias 'qr 'query-replace)
+(defalias 'qrr 'query-replace-regexp)
+(defalias 'lml 'list-matching-lines)
+(defalias 'dml 'delete-matching-lines)
+
+(defalias 'eb 'eval-buffer)
+(defalias 'er 'eval-region)
+(defalias 'ee 'eval-expression)
+
+(defalias 'git 'magit-status)
+(defalias 'ttl 'toggle-truncate-lines)
+
+
+;; dashboard
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome Home")
+(setq dashboard-center-content t)
+
+;; spell checking
+(setq ispell-program-name "/usr/local/bin/hunspell")
+(define-key flyspell-mode-map (kbd "M-;") 'flyspell-correct-wrapper)
+
+;; rainbow delimiter
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(beacon-mode 1)
+(setq beacon-color "#60ff14")
+
+;; smart paren
+(smartparens-global-mode t)
+
+;; some other useful keybindings
+(global-set-key (kbd "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-o") 'crux-smart-open-line)
+
+;; yasnippet
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(yas-global-mode 1)
+
+;; show ivy candidates in popup
+(require 'ivy-posframe)
+;; display at `ivy-posframe-style'
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+;;(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+(setq ivy-posframe-parameters
+      '((left-fringe . 8)
+        (right-fringe . 8)))
+(ivy-posframe-mode 1)

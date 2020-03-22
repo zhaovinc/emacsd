@@ -12,6 +12,7 @@
 (load "modeline")
 (load "company-mode")
 (load "org-mode")
+(load "web-dev")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -24,13 +25,14 @@
  '(json-reformat:indent-width 2)
  '(package-selected-packages
    (quote
-    (yasnippet json-mode smartparens beacon flyspell-correct-ivy zzz-to-char rainbow-delimiters company dashboard doom-modeline winum crux yaml-mode avy expand-region projectile magit markdown-mode darkokai-theme counsel ivy)))
+    (ivy-posframe prettier-js tide yasnippet json-mode smartparens beacon flyspell-correct-ivy zzz-to-char rainbow-delimiters company dashboard doom-modeline winum crux yaml-mode avy expand-region projectile magit markdown-mode darkokai-theme counsel ivy)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "outline" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 170 :width normal :foundry "outline" :family "mononoki"))))
+ '(ivy-posframe-border ((t (:inherit default :background "white")))))
 
 (load-theme 'darkokai t)
