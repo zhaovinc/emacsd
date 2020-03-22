@@ -175,7 +175,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (beacon-mode 1)
-(setq beacon-color "#6699cc")
+(setq beacon-color "#60ff14")
 
 ;; smart paren
 (smartparens-global-mode t)
@@ -183,4 +183,11 @@
 ;; some other useful keybindings
 (global-set-key (kbd "C-k") 'crux-smart-kill-line)
 (global-set-key (kbd "C-o") 'crux-smart-open-line)
+
+;; yasnippet
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(yas-global-mode 1)
+
 

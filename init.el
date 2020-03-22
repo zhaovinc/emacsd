@@ -24,7 +24,7 @@
  '(json-reformat:indent-width 2)
  '(package-selected-packages
    (quote
-    (json-mode smartparens beacon flyspell-correct-ivy zzz-to-char rainbow-delimiters company dashboard doom-modeline winum crux yaml-mode avy expand-region projectile magit markdown-mode darkokai-theme counsel ivy)))
+    (yasnippet json-mode smartparens beacon flyspell-correct-ivy zzz-to-char rainbow-delimiters company dashboard doom-modeline winum crux yaml-mode avy expand-region projectile magit markdown-mode darkokai-theme counsel ivy)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
